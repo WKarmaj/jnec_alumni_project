@@ -3,6 +3,7 @@
 namespace App\Actions\Fortify;
 
 use App\Models\User;
+use App\Models\programme;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
@@ -22,7 +23,7 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'email', 'max:255', Rule::unique('users')->ignore($user->id)],
             'photo' => ['nullable', 'mimes:jpg,jpeg,png', 'max:1024'],
-            'programme' => ['required', Rule::in(\App\Models\Programme::pluck('programme_name')->toArray())],
+            'programme' => ['required', Rule::in(\App\Models\programme::pluck('programme_name')->toArray())],
         ])->validateWithBag('updateProfileInformation');
 
         if (isset($input['photo'])) {
@@ -43,6 +44,9 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
                 'department' => $input['department'],
                 'employment_status' => $input['employment_status'],
                 'relationship_status' => $input['relationship_status'],
+                'organization' => $input['organization'],
+                'designation' => $input['designation'],
+                
             ])->save();
         }
     }

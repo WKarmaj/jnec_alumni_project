@@ -89,42 +89,54 @@
 
  <!-- search page -->
  <div class="page-section">
-  <form action="{{ url('search') }}" method="GET" class="flex items-center">
-    <div class="form-group mr-4">
-      <label for="search">Search:</label>
-      <input type="text" name="search" placeholder="Search">
-    </div>
-    
-    <div class="form-group mr-2">
-      <label for="programme">Programme:</label>
-      <select name="programme" id="programme" class="form-control">
-        <option value="">Select Programme</option>
-        @foreach(\App\Models\Programme::all() as $programme)
-          <option value="{{ $programme->programme_name }}" {{ (Request::get('programme') == $programme->programme_name) ? 'selected' : '' }}>{{ $programme->programme_name }}</option>
-        @endforeach
-      </select>
-    </div>
-    
-    <div class="form-group mr-1">
-      <label for="department">Department:</label>
-      <select name="department" id="department" class="form-control">
-        <option value="">Select Department</option>
-        @foreach(\App\Models\Department::all() as $department)
-          <option value="{{ $department->department_name }}" {{ (Request::get('department') == $department->department_name) ? 'selected' : '' }}>{{ $department->department_name }}</option>
-        @endforeach
-      </select>
-    </div>
-    <div class="form-group mr-1">
-      <label for="year">Year:</label>
-      <select name="year" id="year" class="form-control mr-1">
-        <option value="">Select Year</option>
-        @foreach(range(date('Y'), 2000) as $year)
-          <option value="{{ $year }}" {{ (Request::get('year') == $year) ? 'selected' : '' }}>{{ $year }}</option>
-        @endforeach
-      </select>
-    </div>
-    <button type="submit" class="btn btn-primary">Search</button>
-  </form>
+ <form action="{{ url('search') }}" method="GET" class="flex items-center">
+  <div class="search" style="display:inline-flex; align-items:center; background-image:linear-gradient(45deg,#0561ee, #18e0b5); color: #fff; padding: 10px; border-radius: 4px;" >
+    <label for="search"></label>
+    <input type="text" name="search" placeholder="Search" class="search_input">
+    <button type="submit" class="search_button"></button>
+  </div>
+
+  <div class="form-group mr-2">
+    <label for="programme">Programme:</label>
+    <select name="programme" id="programme" class="form-control">
+      <option value="">Select Programme</option>
+      @foreach(\App\Models\Programme::all() as $programme)
+        <option value="{{ $programme->programme_name }}" {{ (Request::get('programme') == $programme->programme_name) ? 'selected' : '' }}>{{ $programme->programme_name }}</option>
+      @endforeach
+    </select>
+  </div>
+
+  <div class="form-group mr-1">
+    <label for="department">Department:</label>
+    <select name="department" id="department" class="form-control">
+      <option value="">Select Department</option>
+      @foreach(\App\Models\Department::all() as $department)
+        <option value="{{ $department->department_name }}" {{ (Request::get('department') == $department->department_name) ? 'selected' : '' }}>{{ $department->department_name }}</option>
+      @endforeach
+    </select>
+  </div>
+
+  <div class="form-group mr-1">
+    <label for="year">Year:</label>
+    <select name="year" id="year" class="form-control mr-1">
+      <option value="">Select Year</option>
+      @foreach(range(date('Y'), 2000) as $year)
+        <option value="{{ $year }}" {{ (Request::get('year') == $year) ? 'selected' : '' }}>{{ $year }}</option>
+      @endforeach
+    </select>
+  </div>
+
+  <div class="form-group mr-1">
+    <label for="employment_status">Employment Status:</label>
+    <select name="employment_status" id="employment_status" class="form-control mr-1">
+      <option value="">Select Employment Status</option>
+      <option value="full-time" {{ (Request::get('employment_status') == 'full-time') ? 'selected' : '' }}>Full-time</option>
+      <option value="part-time" {{ (Request::get('employment_status') == 'part-time') ? 'selected' : '' }}>Part-time</option>
+      <option value="contract" {{ (Request::get('employment_status') == 'contract') ? 'selected' : '' }}>Contract</option>
+    </select>
+  </div>
+
+</form>
 
     <br>
   

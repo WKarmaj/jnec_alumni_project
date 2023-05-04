@@ -115,7 +115,33 @@
     </div>
 
      <!-- Employment Status --> 
+     <div wire:model.defer="state.employment_status" class="col-span-6 sm:col-span-4">
+     <x-label for="employment_status" value="{{ __('Employment Status') }}" />
+    <div class="flex items-center">
+    <x-input id="employed" type="radio" class="mr-2" name="employment_status" value="employed" wire:model.defer="state.employment_status" onclick="document.getElementById('employed-fields').style.display = 'inline'" autocomplete="employment_status"/>
+        <x-label for="employed" value="{{ __('Employed') }}" />
+       
+        <div id="employed-fields" class="ml-6" style="display:none">
+            <div>
+                <x-label for="organization" value="{{ __('Organization') }}" />
+                <x-input id="organization" type="text" class="mt-1 block w-full" wire:model.defer="state.organization" />
+                <x-input-error for="organization" class="mt-2" />
+            </div>
+            <div class="mt-4">
+                <x-label for="designation" value="{{ __('Position') }}" />
+                <x-input id="designation" type="text" class="mt-1 block w-full" wire:model.defer="state.designation" />
+                <x-input-error for="designation" class="mt-2" />
+            </div>
+        </div>
 
+        <x-input id="unemployed" type="radio" class="ml-6 mr-2" name="employment_status" value="unemployed" wire:model.defer="state.employment_status"/>
+    <x-label for="unemployed" value="{{ __('Unemployed') }}" />
+        
+    </div>
+
+    <x-input-error for="employment_status" class="mt-2" />
+</div>
+  
      <!-- Relationship Status -->
          <div wire:model.defer="state.relationship_status" class="col-span-6 sm:col-span-4">
     <x-label for="relationship_status" value="{{ __('Relationship Status') }}" />

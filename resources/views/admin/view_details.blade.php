@@ -25,7 +25,7 @@
             <label for="programme" class="block mb-2">Programme:</label>
             <select name="programme" id="programme" class="form-control mb-4 sm:mb-0">
               <option value="">Select Programme</option>
-              @foreach(\App\Models\Programme::all() as $programme)
+              @foreach(\App\Models\programme::all() as $programme)
                 <option value="{{ $programme->programme_name }}" {{ (Request::get('programme') == $programme->programme_name) ? 'selected' : '' }}>{{ $programme->programme_name }}</option>
               @endforeach
             </select>
@@ -34,7 +34,7 @@
           <div class="sm:flex-grow">
             <label for="department" class="block mb-2">Department:</label>
             <select name="department" id="department" class="form-control mb-4 sm:mb-0">
-              <option value="">Select Department</option>
+              <option value="">Select department</option>
               @foreach(\App\Models\Department::all() as $department)
                 <option value="{{ $department->department_name }}" {{ (Request::get('department') == $department->department_name) ? 'selected' : '' }}>{{ $department->department_name }}</option>
               @endforeach

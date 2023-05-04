@@ -129,12 +129,14 @@
   <div class="form-group mr-1">
     <label for="employment_status">Employment Status:</label>
     <select name="employment_status" id="employment_status" class="form-control mr-1">
-      <option value="">Select Employment Status</option>
-      <option value="full-time" {{ (Request::get('employment_status') == 'full-time') ? 'selected' : '' }}>Full-time</option>
-      <option value="part-time" {{ (Request::get('employment_status') == 'part-time') ? 'selected' : '' }}>Part-time</option>
-      <option value="contract" {{ (Request::get('employment_status') == 'contract') ? 'selected' : '' }}>Contract</option>
+        <option value="">Select Employment Status</option>
+        @foreach(\App\Models\EmploymentStatus::all() as $status)
+            <option value="{{ $status->id }}" {{ (Request::get('employment_status') == $status->id) ? 'selected' : '' }}>{{ $status->name }}</option>
+        @endforeach
     </select>
-  </div>
+</div>
+
+
 
 </form>
 

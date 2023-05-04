@@ -118,6 +118,7 @@
      <div wire:model.defer="state.employment_status" class="col-span-6 sm:col-span-4">
      <x-label for="employment_status" value="{{ __('Employment Status') }}" />
     <div class="flex items-center">
+        
     <x-input id="employed" type="radio" class="mr-2" name="employment_status" value="employed" wire:model.defer="state.employment_status" onclick="document.getElementById('employed-fields').style.display = 'inline'" autocomplete="employment_status"/>
         <x-label for="employed" value="{{ __('Employed') }}" />
        

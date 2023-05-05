@@ -88,17 +88,17 @@
  
 
  <!-- search page -->
- <div class="page-section">
+<div class="page-section">
  <form action="{{ url('search') }}" method="GET" class="flex items-center">
-  <div class="search" style="display:inline-flex; align-items:center; background-image:linear-gradient(45deg,#0561ee, #18e0b5); color: #fff; padding: 10px; border-radius: 4px;" >
-    <label for="search"></label>
-    <input type="text" name="search" placeholder="Search" class="search_input">
-    <button type="submit" class="search_button"></button>
+     <div class="search" style="display:inline-flex; align-items:center; background-image:linear-gradient(45deg,#0561ee, #18e0b5); color: #fff; padding: 10px; border-radius: 4px;" >
+        <label for="search"></label>
+        <input type="text" name="search" placeholder="Search" class="search_input">
+         <button type="submit" class="search_button"></button>
   </div>
 
-  <div class="form-group mr-2">
+  <div class=" " style="display: inline-flex;">
     <label for="programme">Programme:</label>
-    <select name="programme" id="programme" class="form-control">
+    <select name="programme" id="programme" class="">
       <option value="">Select Programme</option>
       @foreach(\App\Models\Programme::all() as $programme)
         <option value="{{ $programme->programme_name }}" {{ (Request::get('programme') == $programme->programme_name) ? 'selected' : '' }}>{{ $programme->programme_name }}</option>
@@ -106,9 +106,9 @@
     </select>
   </div>
 
-  <div class="form-group mr-1">
+  <div class="" >
     <label for="department">Department:</label>
-    <select name="department" id="department" class="form-control">
+    <select name="department" id="department" class="">
       <option value="">Select Department</option>
       @foreach(\App\Models\Department::all() as $department)
         <option value="{{ $department->department_name }}" {{ (Request::get('department') == $department->department_name) ? 'selected' : '' }}>{{ $department->department_name }}</option>
@@ -116,9 +116,9 @@
     </select>
   </div>
 
-  <div class="form-group mr-1">
+  <div class="" >
     <label for="year">Year:</label>
-    <select name="year" id="year" class="form-control mr-1">
+    <select name="year" id="year" class="">
       <option value="">Select Year</option>
       @foreach(range(date('Y'), 2000) as $year)
         <option value="{{ $year }}" {{ (Request::get('year') == $year) ? 'selected' : '' }}>{{ $year }}</option>
@@ -126,19 +126,11 @@
     </select>
   </div>
 
-  <div class="form-group mr-1">
-    <label for="employment_status">Employment Status:</label>
-    <select name="employment_status" id="employment_status" class="form-control mr-1">
-        <option value="">Select Employment Status</option>
-        @foreach(\App\Models\EmploymentStatus::all() as $status)
-            <option value="{{ $status->id }}" {{ (Request::get('employment_status') == $status->id) ? 'selected' : '' }}>{{ $status->name }}</option>
-        @endforeach
-    </select>
-</div>
 
 
 
-</form>
+
+  </form>
 
     <br>
   

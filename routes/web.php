@@ -77,9 +77,7 @@ Route::post('/upload_programme',[AdminController::class,'uploadprogramme']);
 
 Route::get('view_details',[ViewAlumniController::class,'find']);
 
-Route::get('/feedback', [\App\Http\Controllers\FeedbackController::class, 'index']);
 
-Route::post('/feedback', [\App\Http\Controllers\FeedbackController::class, 'store']);
 
 
 

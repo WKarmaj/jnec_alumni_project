@@ -24,8 +24,6 @@
 <body>
 
   <!-- Back to top button -->
-  <div class="back-to-top"></div>
-
   <header>
     <div class="topbar">
       <div class="container">
@@ -89,49 +87,76 @@
 
  <!-- search page -->
 <div class="page-section">
- <form action="{{ url('search') }}" method="GET" class="flex items-center">
-     <div class="search" style="display:inline-flex; align-items:center; background-image:linear-gradient(45deg,#0561ee, #18e0b5); color: #fff; padding: 10px; border-radius: 4px;" >
-        <label for="search"></label>
-        <input type="text" name="search" placeholder="Search" class="search_input">
-         <button type="submit" class="search_button"></button>
-  </div>
+<div class="container">
+  <form action="{{ url('search') }}" method="GET" class="d-flex flex-wrap justify-content-start ">
+  <div class="search" style="display:inline-flex; align-items:center; background-image:linear-gradient(45deg,#0561ee, #18e0b5); padding: 10px; border-radius: 4px;">
+  <label for="search"></label>
+  <input type="text" name="search" placeholder="Search" class="search_input" style="color: #fff;">
+  <button type="submit" class="search_button" ></button>
+ 
+</div>
+  <table>
+    <tr>
+      <td>
+      <div class="" style="">
+  <label for="programme">Programme:</label>
+  <select name="programme" id="programme" class="" style="width: 150px;">
+    <option value="">Select Programme</option>
+    @foreach(\App\Models\Programme::all() as $programme)
+    <option value="{{ $programme->programme_name }}" {{ (Request::get('programme') == $programme->programme_name) ? 'selected' : '' }}>{{ $programme->programme_name }}</option>
+    @endforeach
+  </select>
+</div>
 
-  <div class=" " style="display: inline-flex;">
-    <label for="programme">Programme:</label>
-    <select name="programme" id="programme" class="">
-      <option value="">Select Programme</option>
-      @foreach(\App\Models\Programme::all() as $programme)
-        <option value="{{ $programme->programme_name }}" {{ (Request::get('programme') == $programme->programme_name) ? 'selected' : '' }}>{{ $programme->programme_name }}</option>
-      @endforeach
-    </select>
-  </div>
-
-  <div class="" >
-    <label for="department">Department:</label>
-    <select name="department" id="department" class="">
-      <option value="">Select Department</option>
-      @foreach(\App\Models\Department::all() as $department)
+    </div>
+      </td>
+   
+      <td>
+    <div class="">
+      <label for="department">Department:</label>
+      <select name="department" id="department" class="" style="width: 150px;">
+        <option value="">Select Department</option>
+        @foreach(\App\Models\Department::all() as $department)
         <option value="{{ $department->department_name }}" {{ (Request::get('department') == $department->department_name) ? 'selected' : '' }}>{{ $department->department_name }}</option>
-      @endforeach
-    </select>
-  </div>
+        @endforeach
+      </select>
+    </div>
+      </td>
 
-  <div class="" >
-    <label for="year">Year:</label>
-    <select name="year" id="year" class="">
-      <option value="">Select Year</option>
-      @foreach(range(date('Y'), 2000) as $year)
-        <option value="{{ $year }}" {{ (Request::get('year') == $year) ? 'selected' : '' }}>{{ $year }}</option>
-      @endforeach
-    </select>
-  </div>
-
-
-
-
+      <td>
+      <div class="">
+          <label for="year">Year:</label>
+          <select name="year" id="year" class="" style="width: 150px;">
+         <option value="">Select Year</option>
+         @foreach(range(date('Y'), 2000) as $year)
+         <option value="{{ $year }}" {{ (Request::get('year') == $year) ? 'selected' : '' }}>{{ $year }}</option>
+        @endforeach
+      </select>
+      </div>
+      </td>
+      <td>
+      <div class="">
+      <label for="employment_status">Employment Status:</label>
+      <select name="employment_status" id="employment_status" class="" style="width: 150px;">
+         <option value="">Select Employment Status</option>
+         <option value="employed" {{ (Request::get('employment_status') == 'employed') ? 'selected' : '' }}>Employed</option>
+         <option value="unemployed" {{ (Request::get('employment_status') == 'unemployed') ? 'selected' : '' }}>Unemployed</option>
+     </select>
+     </div>
+      </td>
+      <td>
+       <div style="margin-right: 210px;">
+       <button type="submit" class="" >Filter</button>
+       </div>
+      </td>
+    </tr>
+  </table>
 
   </form>
+</div>
 
+
+ 
     <br>
   
     @if(count($results) > 0)
@@ -159,9 +184,10 @@
         </tr>
       @endforeach
     </table>
-@else
+    @else
     <p>No data found.</p>
-@endif
+    @endif
+</div>
 
 
   <!--End search page -->

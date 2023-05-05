@@ -17,15 +17,17 @@ class SearchController extends Controller
         $programme = $request->input('programme');
         $department = $request->input('department');
         $year = $request->input('year');
+        $employment_status = $request->input('employment_status');
         
         // Check if any of the search parameters are present
-        if (!$search && !$programme && !$department && !$year) {
+        if (!$search && !$programme && !$department && !$year && !$employment_status) {
             return view('user.view_alumni', [
                 'results' => [],
                 'search' => $search,
                 'programme' => $programme,
                 'department' => $department,
-                'year' => $year
+                'year' => $year,
+                'employment_status' => $employment_status
             ]);
         }
         
@@ -55,7 +57,10 @@ class SearchController extends Controller
         if (!empty($year)) {
             $query->where('year', $year);
         }
-        
+        if (!empty($employment_status)) {
+            $query->where('employment_status', $employment_status);
+        }
+
         $results = $query->get();
         
         return view('user.view_alumni', [
@@ -63,7 +68,8 @@ class SearchController extends Controller
             'search' => $search,
             'programme' => $programme,
             'department' => $department,
-            'year' => $year
+            'year' => $year,
+            'employment_status' => $employment_status
         ]);
     }
     

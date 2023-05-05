@@ -10296,24 +10296,23 @@ select {
 }
 .search :is(input,button){
   background: transparent;
-  color: inherit;
+  color: #fff;;
   border: none;
   outline: none;
 }
-.search_input{
-  width:0;
-  transition: width 0.5s;
 
-}
+
+
 .search_button{
   display:grid;
   place-items: center;
   width:20px;
-  height: 20px;
+  height: 10px;
   cursor:pointer;
   transition: color .25s;
 }
 .search:focus-within input {
   width:200px;
 }
+
 /*# sourceMappingURL=bootstrap.css.map */

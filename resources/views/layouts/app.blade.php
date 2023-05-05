@@ -33,11 +33,11 @@
             @endif
 
             <!-- Page Content -->
+            
             <main>
-            @section('content')
-                 {{ $slot }}
-            @endsection
+                {{ $slot }}
             </main>
+           
         </div>
 
         @stack('modals')

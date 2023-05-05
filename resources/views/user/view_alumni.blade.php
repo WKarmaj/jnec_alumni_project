@@ -89,9 +89,9 @@
 <div class="page-section">
 <div class="container">
   <form action="{{ url('search') }}" method="GET" class="d-flex flex-wrap justify-content-start ">
-  <div class="search" style="display:inline-flex; align-items:center; background-image:linear-gradient(45deg,#0561ee, #18e0b5); padding: 10px; border-radius: 4px;">
+  <div class="search" style="display:inline-flex; align-items:center;  padding: 10px; border-radius: 4px;">
   <label for="search"></label>
-  <input type="text" name="search" placeholder="Search" class="search_input" style="color: #fff;">
+  <input type="text" name="search" placeholder="Search here..." class="search_input" style="color: #fff;">
   <button type="submit" class="search_button" ></button>
  
 </div>
@@ -145,8 +145,8 @@
      </div>
       </td>
       <td>
-       <div style="margin-right: 210px;">
-       <button type="submit" class="" >Filter</button>
+       <div style="margin-right: 210px; " >
+       <button type="submit" class="">Filter </button>
        </div>
       </td>
     </tr>

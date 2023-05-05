@@ -71,17 +71,17 @@
             <x-label for="email" value="{{ __('Email') }}" />
             <x-input id="email" type="email" class="mt-1 block w-full" wire:model.defer="state.email" autocomplete="username" />
             <x-input-error for="email" class="mt-2" />
-
+        </div>
+    
     <!-- Year of Graduation -->
-    <!-- Year of Graduation -->
-<div   wire:model.defer="state.year" class="col-span-6 sm:col-span-4">
+    <div class="col-span-6 sm:col-span-4">
     <x-label for="year" value="{{ __('Year') }}" />
-    <select name="year" id="year" class="px-3 py-2 block mt-1 w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm" wire:model="state.year" required>
+    <select name="year" id="year" class="px-3 py-2 block mt-1 w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm" wire:model.defer="state.year" required>
         @for($i = 1974; $i <= 2100; $i++)
             <option value="{{ $i }}" @if($state['year'] == $i) selected @endif>{{ $i }}</option>
         @endfor
     </select>
-    <x-input-error for="year" class="mt-2" />
+    <x-input-error for="state.year" class="mt-2" />
 </div>
 
 
@@ -155,6 +155,8 @@
     </select>
     <x-input-error for="relationship_status" class="mt-2" />
     </div>
+             <!-- Email -->
+        <div class="col-span-6 sm:col-span-4">
 
             @if (Laravel\Fortify\Features::enabled(Laravel\Fortify\Features::emailVerification()) && ! $this->user->hasVerifiedEmail())
                 <p class="text-sm mt-2">
@@ -166,7 +168,7 @@
                 </p>
 
                 @if ($this->verificationLinkSent)
-                    <p v-show="verificationLinkSent" class="mt-2 font-medium text-sm text-green-600">
+                    <p class="mt-2 font-medium text-sm text-green-600">
                         {{ __('A new verification link has been sent to your email address.') }}
                     </p>
                 @endif

@@ -10,9 +10,7 @@ use App\Http\Controllers\SearchController;
 
 use App\Http\Controllers\ViewAlumniController;
 
-use App\Http\Livewire\FeedbackForm;
-
-use App\Http\Controllers\FeedbackController;
+use App\Http\Controllers\ContactController;
 
 /*
 |--------------------------------------------------------------------------
@@ -77,7 +75,9 @@ Route::post('/upload_programme',[AdminController::class,'uploadprogramme']);
 
 Route::get('view_details',[ViewAlumniController::class,'find']);
 
-Route::post('/',[FeedbackController::class,'submitfeedback']);
+Route::get('contact-us', [ContactController::class, 'index']);
+
+Route::post('contact-us', [ContactController::class, 'store'])->name('contact.us.store');
 
 
 

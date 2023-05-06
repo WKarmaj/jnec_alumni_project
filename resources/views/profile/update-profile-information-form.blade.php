@@ -104,9 +104,9 @@
     </div>
 
     <!-- Department -->
-    <div wire:model.defer="state.department" class="col-span-6 sm:col-span-4">
+    <div class="col-span-6 sm:col-span-4">
     <x-label for="department" value="{{ __('Department') }}" />
-    <select name="department" id="department" class="px-3 py-2 block mt-1 w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm">
+    <select name="department" id="department" class="px-3 py-2 block mt-1 w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"  wire:model.defer="state.department">
         @foreach(\App\Models\department::all() as $department)
             <option value="{{ $department->department_name }}" @if(old('department', $state['department']) == $department->department_name) selected @endif>{{ $department->department_name }}</option>
         @endforeach

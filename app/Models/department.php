@@ -12,4 +12,15 @@ class department extends Model
     {
     return $this->hasMany(User::class);
     }
+    protected $fillable = [
+        'id',
+        'department_name',
+        'created_at',
+        'updated_at'
+    ];
+
+    public function programmes()
+    {
+    return $this->hasMany(Programme::class);
+    }
 }

@@ -13,7 +13,7 @@
       
              <!-- partial:partials/_navbar.html -->
                 @include('admin.navbar')
-    <div class="flex items-center" style="padding-top: 250px;">
+    <div class="flex items-center" style="">
       <div class="col-span-6 sm:col-span-4">
 
         <form action="{{ url('view_details') }}" method="GET" class="flex flex-col sm:flex-row items-center">

@@ -168,7 +168,6 @@
             <td style="padding: 20px;">{{$user->address}}</td>
             <td style="padding: 20px;">{{$user->department}}</td>
             <td style="padding: 20px;">{{$user->programme}}</td>
-            
             <td style="padding: 20px;">{{$user->employment_status}}</td>
         </tr>
       @endforeach

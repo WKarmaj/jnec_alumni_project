@@ -13,7 +13,7 @@
       
              <!-- partial:partials/_navbar.html -->
                 @include('admin.navbar')
-    <div class="flex items-center" style="">
+    <div class="flex items-center" style="margin-top:70px;">
       <div class="col-span-6 sm:col-span-4">
 
         <form action="{{ url('view_details') }}" method="GET" class="flex flex-col sm:flex-row items-center">
@@ -30,17 +30,6 @@
           <tr>
               <td>
               <div class="sm:flex-grow">
-                <label for="programme" class="block mb-2">Programme:</label>
-                  <select name="programme" id="programme" class="form-control mb-4 sm:mb-0" style="width: 150px;">
-                  <option value="">Select Programme</option>
-                  @foreach(\App\Models\programme::all() as $programme)
-                  <option value="{{ $programme->programme_name }}" {{ (Request::get('programme') == $programme->programme_name) ? 'selected' : '' }}>{{ $programme->programme_name }}</option>
-                   @endforeach
-                  </select>
-              </div>
-              </td>
-              <td>
-              <div class="sm:flex-grow">
             <label for="department" class="block mb-2">Department:</label>
             <select name="department" id="department" class="form-control mb-4 sm:mb-0" style="width: 150px;">
               <option value="">Select department</option>
@@ -49,6 +38,17 @@
               @endforeach
             </select>
           </div>
+              </td>
+              <td>
+              <div class="sm:flex-grow">
+                <label for="programme" class="block mb-2">Programme:</label>
+                  <select name="programme" id="programme" class="form-control mb-4 sm:mb-0" style="width: 150px;">
+                  <option value="">Select Programme</option>
+                  @foreach(\App\Models\programme::all() as $programme)
+                  <option value="{{ $programme->programme_name }}" {{ (Request::get('programme') == $programme->programme_name) ? 'selected' : '' }}>{{ $programme->programme_name }}</option>
+                   @endforeach
+                  </select>
+              </div>
               </td>
               <td>
               <div class="sm:flex-grow">

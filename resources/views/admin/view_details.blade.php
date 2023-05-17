@@ -34,7 +34,7 @@
             <select name="department" id="department" class="form-control mb-4 sm:mb-0" style="width: 150px;">
               <option value="">Select department</option>
               @foreach(\App\Models\Department::all() as $department)
-                <option value="{{ $department->department_name }}" {{ (Request::get('department') == $department->department_name) ? 'selected' : '' }}>{{ $department->department_name }}</option>
+                <option value="{{ $department->department_name }}" {{ (Request::get('department') == $department->id) ? 'selected' : '' }}>{{ $department->department_name }}</option>
               @endforeach
             </select>
           </div>
@@ -68,25 +68,15 @@
               </td>
         </tr>
           </table>
-
-          
-
-
-
-
-
-
         </form>
   
-
-
             <table>
                 <tr style="background-color:tomato;">
                     <td style="padding: 10px;">Name</td>
                     <td style="padding: 10px;">Email</td>
                     <td style="padding: 10px;">Phone</td>
-                    <td style="padding: 10px;">Programme</td>
                     <td style="padding: 10px;">Department</td>
+                    <td style="padding: 10px;">Programme</td>  
                     <td style="padding: 10px;">Remarks</td>
                 </tr>
                 @foreach($query as $users)
@@ -94,8 +84,8 @@
                     <td style="padding: 10px;">{{$users->name}}</td>
                     <td style="padding: 10px;">{{$users->email}}</td>
                     <td style="padding: 10px;">{{$users->phone}}</td>
-                    <td style="padding: 10px;">{{$users->programme}}</td>
                     <td style="padding: 10px;">{{$users->department}}</td>
+                    <td style="padding: 10px;">{{$users->programme}}</td>
                     @if($users->usertype==("0"))
                     <td><a onclick="return confirm('Are You Sure?')" class="btn btn-danger" href="{{url('deleteuser',$users->id)}}">Delete</a></td>
                     @else

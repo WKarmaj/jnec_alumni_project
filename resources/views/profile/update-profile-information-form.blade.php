@@ -96,10 +96,12 @@
     <div class="col-span-6 sm:col-span-4">
     <x-label for="department" value="{{ __('Department') }}" />
     <select name="department" id="department" class="px-3 py-2 block mt-1 w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm" wire:model.defer="state.department">
-        @foreach(\App\Models\Department::all() as $department)
-            <option value="{{ $department->department_name }}" @if($state['department']== $department->department_name ) selected @endif>{{ $department->department_name }}</option>
-        @endforeach
-    </select>
+    <option value="">Select Department</option>
+    @foreach(\App\Models\Department::all() as $department)
+    <option value="{{ $department->id }}" @if(isset($state['department']) && $state['department']== $department->id ) selected @endif>{{ $department->department_name }}</option>
+    @endforeach
+</select>
+
     <x-input-error for="department" class="mt-2" />
 </div>
 
@@ -109,7 +111,7 @@
     <x-label for="programme" value="{{ __('Programme') }}" />
     <select name="programme" id="programme" class="px-3 py-2 block mt-1 w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm" wire:model.defer="state.programme">
         @foreach(\App\Models\programme::all() as $program)
-            <option value="{{ $program->programme_name }}" @if($state['programme'] == $program->programme_name) selected @endif>{{ $program->programme_name }}</option>
+        <option value="{{ $program->id }}" @if(isset($state['programme']) && $state['programme'] == $program->id) selected @endif>{{ $program->programme_name }}</option>
         @endforeach
     </select>
     <x-input-error for="programme" class="mt-2" />

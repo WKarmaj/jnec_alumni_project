@@ -23,8 +23,7 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'email', 'max:255', Rule::unique('users')->ignore($user->id)],
             'photo' => ['nullable', 'mimes:jpg,jpeg,png', 'max:1024'],
-            'department' => ['required', Rule::in(\App\Models\department::pluck('department_name')->toArray())],
-            'programme' => ['required', Rule::in(\App\Models\programme::pluck('programme_name')->toArray())],   
+            
         ])->validateWithBag('updateProfileInformation');
 
         if (isset($input['photo'])) {
@@ -40,8 +39,8 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
                 'phone' => $input['phone'],
                 'year' => $input['year'],
                 'address' => $input['address'],
-                'department' => $input['department'],
-                'programme' => $input['programme'],
+                'department_id' => $input['department'],
+                'programme_id' => $input['programme'],
                 'employment_status' => $input['employment_status'],
                 'relationship_status' => $input['relationship_status'],
                 'organization' => $input['organization'],

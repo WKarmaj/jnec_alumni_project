@@ -76,7 +76,8 @@ public function search(Request $request)
                 ->orWhere('users.email', 'like', '%' . $search . '%')
                 ->orWhere('users.year', 'like', '%' . $search . '%')
                 ->orWhere('users.address', 'like', '%' . $search . '%')
-                ->orWhere('users.employment_status', 'like', '%' . $search . '%');
+                ->orWhere('users.employment_status', 'like', '%' . $search . '%')
+                ->orWhere('users.organization', 'like', '%' . $search . '%');
         });
     }
 

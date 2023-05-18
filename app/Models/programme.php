@@ -26,5 +26,10 @@ class programme extends Model
     {
     return $this->hasMany(User::class);
     }
+    public function getProgramsByDepartment($departmentId)
+{
+    $programs = Programme::where('department_id', $departmentId)->get(['id', 'programme_name']);
+    return response()->json($programs);
+}
 
 }

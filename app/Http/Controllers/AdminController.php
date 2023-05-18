@@ -8,9 +8,9 @@ use App\Models\event;
 
 use App\Models\User;
 
-use App\Models\department;
+use App\Models\Department;
 
-use App\Models\programme;
+use App\Models\Programme;
 
 use Illuminate\Support\Facades\Hash;
 
@@ -154,24 +154,12 @@ class AdminController extends Controller
 
         $department->save();
 
-         return redirect()->back();
+         return redirect()->back()->with('success', 'Department added successfully.');
 
    }
-   public function addprogramme()
-   {
-    return view('admin.add_programme');
-   }
+
     
-   public function uploadprogramme(Request $request)
-   {
-        $programme = new programme;
-
-        $programme->programme_name=$request->programme_name;
-
-        $programme->save();
-
-        return redirect()->back();
-   }
+   
  
 
 }

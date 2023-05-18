@@ -100,32 +100,35 @@
  <!-- search page -->
 
   <div class="page-section">
-    <div class="container">
-      <form id="search" action="{{ url('search') }}" method="GET" class="d-flex flex-wrap justify-content-start "> 
-        <label for="search"></label>
-          <input type="text" name="search" id="search" placeholder="Search" class="form-control" style="width:250px; border-radius:4px;">
+    <div class="container" style="display: flex;">
+      <form id="search" action="{{ url('search') }}" method="GET" class=" "> 
+      <label for="search"></label>
+    <div style="display: flex;">
+      <input type="text" name="search" id="search" placeholder="Search" class="form-control" style="width: 250px; border-radius: 4px; padding: 10px; border: 2px solid #ccc; font-size: 16px; outline: none; box-shadow: none; transition: border-color 0.3s ease;">
+      
+    </div>
     </div>
     <table>
       <tr>
         <td>
         <div class=""> 
-    <label for="department">Department:</label> 
-    <select name="department_id" id="department" class="" style="width: 250px; border-radius: 4px;">
-        <option value="">Select Department</option>
-        @foreach(\App\Models\Department::all() as $department)
-        <option value="{{ $department->id }}" @if(isset($state['department_id']) && $state['department_id']== $department->id ) selected @endif>{{ $department->department_name }}</option>
-        @endforeach
-    </select>
-</div>
+          <label for="department">Department:</label> 
+            <select name="department_id" id="department" class="" style="width: 250px; border-radius: 4px;">
+              <option value="">Select Department</option>
+                @foreach(\App\Models\Department::all() as $department)
+              <option value="{{ $department->id }}" @if(isset($state['department_id']) && $state['department_id']== $department->id ) selected @endif>{{ $department->department_name }}</option>
+                @endforeach
+            </select>
+        </div>
         </td>
 
         <td>
         <div class="" style="">
-    <label for="programme">Programme:</label>
-    <select name="programme_id" id="programme" class="" style="width: 150px; border-radius: 4px;">
-        <option value="">Select Programme</option>
-    </select>
-</div>
+          <label for="programme">Programme:</label>
+            <select name="programme_id" id="programme" class="" style="width: 250px; border-radius: 4px;">
+              <option value="">Select Programme</option>
+            </select>
+        </div>
         </td>
       <td>
         <div class="">
@@ -141,7 +144,7 @@
       <td>
         <div class="">
          <label for="employment_status">Employment Status:</label>
-         <select name="employment_status" id="employment_status" class="" style="width: 150px; border-radius:4px;">
+         <select name="employment_status" id="employment_status" class="" style="width: 250px; border-radius:4px;">
              <option value="">Select Employment Status</option>
              <option value="employed" {{ (Request::get('employment_status') == 'employed') ? 'selected' : '' }}>Employed</option>
              <option value="unemployed" {{ (Request::get('employment_status') == 'unemployed') ? 'selected' : '' }}>Unemployed</option>
@@ -156,33 +159,32 @@
       </tr>
      </table>
    </form>
-  
 
-
-    <br>
-    
+    <br> 
     @if(count($results) > 0)
     <table class="" id="results-table">
      <tr style="background-color:tomato;">
-        <td style="padding: 10px;">Name</td>
-        <td style="padding: 10px;">Email</td>
-        <td style="padding: 10px;">Phone</td>
-        <td style="padding: 10px;">Year of Graduation</td>
-        <td style="padding: 10px;">Address</td>
-        <td style="padding: 10px;">Department</td>
-        <td style="padding: 10px;">Programme</td>
-        <td style="padding: 10px;">Employment Status</td>
+        <td style="padding: 8px;">Name</td>
+        <td style="padding: 8px;">Email</td>
+        <td style="padding: 8px;">Phone</td>
+        <td style="padding: 8px;">Year of Graduation</td>
+        <td style="padding: 8px;">Address</td>
+        <td style="padding: 8px;">Department</td>
+        <td style="padding: 8px;">Programme</td>
+        <td style="padding: 8px;">Employment Status</td>
+        <td style="padding: 8px;">Organization</td>
       </tr>
       @foreach($results as $user)
         <tr align="center" style ="">
-            <td style="padding: 20px;">{{$user->name}}</td>
-            <td style="padding: 20px;">{{$user->email}}</td>
-            <td style="padding: 20px;">{{$user->phone}}</td>
-            <td style="padding: 20px;">{{$user->year}}</td>
-            <td style="padding: 20px;">{{$user->address}}</td>
-            <td style="padding: 20px;">{{$user->department_name}}</td>
-            <td style="padding: 20px;">{{$user->programme_name}}</td>
-            <td style="padding: 20px;">{{$user->employment_status}}</td>
+            <td style="padding: 10px;">{{$user->name}}</td>
+            <td style="padding: 10px;">{{$user->email}}</td>
+            <td style="padding: 10px;">{{$user->phone}}</td>
+            <td style="padding: 10px;">{{$user->year}}</td>
+            <td style="padding: 10px;">{{$user->address}}</td>
+            <td style="padding: 10px;">{{$user->department_name}}</td>
+            <td style="padding: 10px;">{{$user->programme_name}}</td>
+            <td style="padding: 10px;">{{$user->employment_status}}</td>
+            <td style="padding: 10px;">{{$user->organization}}</td>
         </tr>
       @endforeach
     </table>

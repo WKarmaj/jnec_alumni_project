@@ -52,9 +52,6 @@
               <a class="nav-link" href="{{url('view_event')}}">Event</a>
             </li>
 
-            <li class="nav-item active">
-              <a class="nav-link" href="{{url('search')}}">Alumni</a>
-            </li>
            
 
 

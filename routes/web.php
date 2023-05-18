@@ -12,6 +12,8 @@ use App\Http\Controllers\ViewAlumniController;
 
 use App\Http\Controllers\ContactController;
 
+use App\Http\Controllers\ProgramController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -53,6 +55,7 @@ Route::get('/view_alumni',[HomeController::class,'viewalumni']);
 
 Route::get('search',[SearchController::class,'search']);
 
+
 Route::get('/view_details',[AdminController::class,'viewdetails']);
 
 Route::get('/deleteuser/{id}',[AdminController::class,'deleteuser']);
@@ -69,9 +72,9 @@ Route::get('/edit_department',[AdminController::class,'editdepartment']);
 
 Route::post('/add_department',[AdminController::class,'adddepartment']);
 
-Route::get('/add_programme',[AdminController::class,'addprogramme']);
 
-Route::post('/upload_programme',[AdminController::class,'uploadprogramme']);
+
+//Route::post('/upload_programme',[ProgramController::class,'uploadprogramme']);
 
 Route::get('view_details',[ViewAlumniController::class,'find']);
 
@@ -81,6 +84,19 @@ Route::post('contact-us', [ContactController::class, 'store'])->name('contact.us
 
 
 Route::get('getProgrammeByDepartment/{department_id}', [App\Http\Controllers\SearchController::class, 'getProgrammeByDepartment']);
+
+Route::get('/get-programs/{department_id}', [ProgramController::class, 'getProgramsByDepartment'])->name('getProgramsByDepartment');
+
+
+Route::get('/add_programme',[ProgramController::class,'addprogramme']);
+
+Route::get('/addprogramme', [ProgramController::class, 'addprogramme'])->name('add.programme');
+Route::post('/uploadprogramme', [ProgramController::class, 'uploadprogramme'])->name('upload.programme');
+
+
+
+
+
 
 
 

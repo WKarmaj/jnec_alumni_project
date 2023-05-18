@@ -4,27 +4,28 @@
 
 
   @include('admin.css')
+  
 
   </head>
 
   <body>
-    
+            
       <!-- partial:partials/_sidebar.html -->
                 @include('admin.sidebar')
       <!-- partial -->
     
         <!-- partial:partials/_navbar.html -->
-                @include('admin.navbar')
+        @include('admin.navbar')
         <!-- partial -->
         
     <!-- container-scroller -->
     <!-- plugins:js -->
-                @include('admin.script')
+              
     <!-- End custom js for this page -->
-    <div class="container-fluid page-body-wrapper">
+    <div class="" style="">
 
 
-        <div class="container" align ="center" style="margin-top:-450px; padding-top: 50px;" >
+      <div class="container" align ="center" style="margin-top:-450px; padding-top: 50px;" >
         
 
         @if(session()->has('message'))
@@ -38,7 +39,7 @@
         </div>
 
 
-        @endif
+          @endif
           <form action="{{url('upload_event')}}" method="POST" enctype="multipart/form-data">
 
               @csrf
@@ -94,5 +95,6 @@
         </div>
 
     </div>
+    @include('admin.script')
   </body>
 </html>

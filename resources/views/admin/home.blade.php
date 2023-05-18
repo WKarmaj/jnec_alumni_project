@@ -4,7 +4,7 @@
     @include('admin.css')
     </head>
  
-  <body>
+  <body style="">
     <div class="container-scroller">
 
     

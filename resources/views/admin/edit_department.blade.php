@@ -3,40 +3,7 @@
     <head>
     @include('admin.css')
 
-    <style>
-    .container {
-        padding: 20px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        max-width: 400px;
-        margin: 0 auto;
-    }
-
-    .form-group {
-        margin-bottom: 10px;
-    }
-
-    .form-group label {
-        display: block;
-        margin-bottom: 5px;
-    }
-
-    .form-group input[type="text"] {
-        width: 100%;
-        padding: 5px;
-        border: 1px solid #ccc;
-        border-radius: 3px;
-    }
-
-    .btn-primary {
-        background-color: #007bff;
-        color: white;
-        padding: 5px 10px;
-        border: none;
-        border-radius: 3px;
-        cursor: pointer;
-    }
-</style>
+   
     </head>
  
   <body>
@@ -50,23 +17,28 @@
         <!-- partial:partials/_navbar.html -->
                 @include('admin.navbar')
         <!-- partial -->
-<div class="conatainer-fluid page-body-wrapper">
-        
-
-  <div class="container">
-    <form action="{{url('add_department')}}" method="POST" enctype="multipart/form-data">
-        @csrf
-        <div class="form-group">
-            <label for="department_name">Department Name:</label>
-            <input type="text" id="department_name" name="department_name" placeholder="Add department here......">
+ <div class="container-fluid page-body-wrapper">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Add Department</h4>
+                        <form action="{{ url('add_department') }}" method="POST" enctype="multipart/form-data">
+                            @csrf
+                            <div class="form-group">
+                                <label for="department_name">Department Name:</label>
+                                <input type="text" id="department_name" name="department_name" class="form-control" placeholder="Add department here..." required>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
-        <input type="submit" class="btn btn-primary" value="Submit">
-    </form>
-  </div>
+    </div>
+</div>
 
-
-            
-      </div>
                 @include('admin.script')
     <!-- End custom js for this page -->
 </div>

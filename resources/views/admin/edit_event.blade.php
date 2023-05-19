@@ -5,7 +5,7 @@
     </head>
  
   <body>
-    <div class="container-scroller">
+    <div class="container-scroller" style="background-color: #f2f2f2; font-family: Arial, sans-serif; color:black;">
 
     
       <!-- partial:partials/_sidebar.html -->
@@ -14,7 +14,7 @@
       
         <!-- partial:partials/_navbar.html -->
                 @include('admin.navbar')
-                <div class="conatainer-fluid page-body-wrapper">
+              <div class="conatainer-fluid page-body-wrapper">
                 <div align="center" style="padding-top:100px;">
                      <table>
                       <tr style="background-color:tomato;">

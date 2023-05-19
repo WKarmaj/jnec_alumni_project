@@ -1,100 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
 
-
+<head>
   @include('admin.css')
+</head>
+
+<body style="background-color: #f2f2f2; font-family: Arial, sans-serif;">
+  <div class="container-scroller" >
+      @include('admin.navbar')
+
+  
+      @include('admin.sidebar')
   
 
-  </head>
+      <div class="conatainer-fluid page-body-wrapper" style="margin-top: 50px;">
+          @if(session()->has('message'))
+            <div class="alert alert-success">
+             <button type="button" class="close" data-dismiss="alert"></button>
+              {{ session()->get('message') }}
+            </div>
+            @endif
 
-  <body>
-            
-      <!-- partial:partials/_sidebar.html -->
-                @include('admin.sidebar')
-      <!-- partial -->
-    
-        <!-- partial:partials/_navbar.html -->
-        @include('admin.navbar')
-        <!-- partial -->
-        
-    <!-- container-scroller -->
-    <!-- plugins:js -->
-              
-    <!-- End custom js for this page -->
-    <div class="" style="">
+            <div class="card" style="background-color: #f2f2f2; font-family: Arial, sans-serif;">
+  <div class="card-body">
+    <h4 class="card-title" style="color:black;">Upload Event</h4>
+    <form action="{{ url('upload_event') }}" method="POST" enctype="multipart/form-data" style="background-color: #f2f2f2; font-family: Arial, sans-serif;">
+      @csrf
 
-
-      <div class="container" align ="center" style="margin-top:-450px; padding-top: 50px;" >
-        
-
-        @if(session()->has('message'))
-
-        <div class="alert alert-success">
-          <button type="button" class="close" data-dismiss="alert">
-          </button>
-
-          {{session()->get('message')}}
-
+      <div class="form-group row">
+        <label for="name" class="col-sm-3 col-form-label text-right" style="color: #333;">Name of the Event:</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control" name="name" placeholder="Enter the name" style="color: #333; background-color: #f8f9fa;">
         </div>
+      </div>
 
-
-          @endif
-          <form action="{{url('upload_event')}}" method="POST" enctype="multipart/form-data">
-
-              @csrf
-
-          <div style="display: flex; flex-direction: column;">
-              <div style="display: flex; align-items: center; margin-bottom: 10px;">
-                <label for="" style="flex: 1; text-align: right; margin-right: 10px;">Name of the Event:</label>
-                <input type="text" style="color:black; flex: 2;" name="name" placeholder="Enter the name">
-              </div>
-
-              <div style="display: flex; align-items: center; margin-bottom: 10px;">
-                <label for="" style="flex: 1; text-align: right; margin-right: 10px;">Image:</label>
-                <input type="file" name="file" placeholder="Image" style="flex: 2;">
-              </div>
-
-              <div style="display: flex; align-items: center; margin-bottom: 10px;">
-                <label for="" style="flex: 1; text-align: right; margin-right: 10px;">Date:</label>
-                <input type="date" style="color:black; flex: 2;" name="date" placeholder="Date">
-              </div>
-
-              <div style="display: flex; align-items: center; margin-bottom: 10px;">
-                <label for="" style="flex: 1; text-align: right; margin-right: 10px;">Time:</label>
-                <input type="time" style="color:black; flex: 2" name="time" placeholder="Time">
-              </div>
-
-              <div style="display: flex; align-items: center; margin-bottom: 10px;">
-                <label for=""style="flex: 1; text-align: right; margin-right: 10px;">Venue:</label>
-                <input type="text" style="color:black; flex: 2;" name="venue" placeholder="Place or Venue">
-              </div>
-
-              <div style="display: flex; align-items: center; margin-bottom: 10px;">
-                <label for="" style="flex: 1; text-align: right; margin-right: 10px;">About the Event:</label>
-                <textarea name="about" id="about" style="color:black; flex: 2" rows="4" placeholder="Enter the description...."></textarea>
-              </div>
-
-              <div style="display: flex; align-items: center; margin-bottom: 10px;">
-                <label for="" style="flex: 1; text-align: right; margin-right: 10px;">Focal Person:</label>
-                <input type="text" style="color:black; flex: 2" name="person" placeholder="Name event focal person">
-              </div>
-
-              <div style="display: flex; align-items: center; margin-bottom: 10px;">
-                <label for="" style="flex: 1; text-align: right; margin-right: 10px;">Phone Number:</label>
-                <input type="text" style="color:black; flex: 2;" name="number" placeholder="Phone Number">
-              </div>
-
-              <div style="display: flex; justify-content: center; margin-top: 20px;">
-                
-                <input type="submit" class="btn btn-success">
-              </div>
-         </div>
-
-          </form>
+      <div class="form-group row">
+        <label for="file" class="col-sm-3 col-form-label text-right" style="color: #333;">Image:</label>
+        <div class="col-sm-9">
+          <input type="file" class="form-control-file" name="file" style="color: #333;">
         </div>
+      </div>
 
+      <div class="form-group row">
+        <label for="date" class="col-sm-3 col-form-label text-right" style="color: #333;">Date:</label>
+        <div class="col-sm-9">
+          <input type="date" class="form-control" name="date" style="color: #333; background-color: #f8f9fa;">
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="time" class="col-sm-3 col-form-label text-right" style="color: #333;">Time:</label>
+        <div class="col-sm-9">
+          <input type="time" class="form-control" name="time" style="color: #333; background-color: #f8f9fa;">
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="venue" class="col-sm-3 col-form-label text-right" style="color: #333;">Venue:</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control" name="venue" placeholder="Place or Venue" style="color: #333; background-color: #f8f9fa;">
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="about" class="col-sm-3 col-form-label text-right" style="color: #333;">About the Event:</label>
+        <div class="col-sm-9">
+          <textarea class="form-control" name="about" rows="4" placeholder="Enter the description..." style="color: #333; background-color: #f8f9fa;"></textarea>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="person" class="col-sm-3 col-form-label text-right" style="color: #333;">Focal Person:</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control" name="person" placeholder="Name of the event focal person" style="color: #333; background-color: #f8f9fa;">
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="number" class="col-sm-3 col-form-label text-right" style="color: #333;">Phone Number:</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control" name="number" placeholder="Phone Number" style="color: #333; background-color: #f8f9fa;">
+        </div>
+      </div>
+
+      <div class="form-group text-center">
+        <button type="submit" class="btn btn-success" style="color:black;">Submit</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+        
+
+       @include('admin.script')
     </div>
-    @include('admin.script')
-  </body>
+</body>
+
 </html>

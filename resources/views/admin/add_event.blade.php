@@ -13,16 +13,17 @@
       @include('admin.sidebar')
   
 
-      <div class="conatainer-fluid page-body-wrapper" style="margin-top: 50px;">
-          @if(session()->has('message'))
+ <div class="conatainer-fluid page-body-wrapper" style="margin-top: 50px;">
+
+
+            <div class="card" style="background-color: #f2f2f2; font-family: Arial, sans-serif;">
+    <div class="card-body">
+    @if(session()->has('message'))
             <div class="alert alert-success">
              <button type="button" class="close" data-dismiss="alert"></button>
               {{ session()->get('message') }}
             </div>
             @endif
-
-            <div class="card" style="background-color: #f2f2f2; font-family: Arial, sans-serif;">
-  <div class="card-body">
     <h4 class="card-title" style="color:black;">Upload Event</h4>
     <form action="{{ url('upload_event') }}" method="POST" enctype="multipart/form-data" style="background-color: #f2f2f2; font-family: Arial, sans-serif;">
       @csrf

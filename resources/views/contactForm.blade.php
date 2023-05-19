@@ -35,6 +35,6 @@
           </div>
         </div>
 
-        <button type="submit" class="btn btn-primary mt-3 wow zoomIn">Submit</button>
+        <button type="submit" class="btn btn-primary mt-3 wow zoomIn" style="background-color:#79E0EE;">Submit</button>
       </form>
         

@@ -81,7 +81,7 @@
         <span class="menu-icon">
           <i class="mdi mdi-table-large"></i>
         </span>
-        <span class="menu-title">View details</span>
+        <span class="menu-title">Delete details</span>
       </a>
     </li>
     <li class="nav-item menu-items">

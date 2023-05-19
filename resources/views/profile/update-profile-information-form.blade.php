@@ -75,8 +75,9 @@
     
     <!-- Year of Graduation -->
     <div class="col-span-6 sm:col-span-4">
-    <x-label for="year" value="{{ __('Year') }}" />
+    <x-label for="year" value="{{ __('Year of Graduation') }}" />
     <select name="year" id="year" class="px-3 py-2 block mt-1 w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm" wire:model.defer="state.year" required>
+         <option value="">Select Year</option>
         @for($i = 1974; $i <= 2100; $i++)
             <option value="{{ $i }}" @if($state['year'] == $i) selected @endif>{{ $i }}</option>
         @endfor
@@ -86,16 +87,39 @@
 
 
     <!-- Current address -->
-        <div class="col-span-6 sm:col-span-4">
-            <x-label for="address" value="{{ __('Current Address') }}" />
-            <x-input id="address" type="text" class="mt-1 block w-full" wire:model.defer="state.address" autocomplete="address" />
-            <x-input-error for="address" class="mt-2" />
-        </div>
+    <div class="col-span-6 sm:col-span-4">
+    <x-label for="address" value="{{ __('Current Address') }}" />
+    <select id="address" class="mt-1 block w-full" wire:model.defer="state.address">
+        <option value="">Select an address</option>
+        <option value="Bumthang">Bumthang</option>
+        <option value="Chukha">Chukha</option>
+        <option value="Dagana">Dagana</option>
+        <option value="Gasa">Gasa</option>
+        <option value="Haa">Haa</option>
+        <option value="Lhuntse">Lhuntse</option>
+        <option value="Mongar">Mongar</option>
+        <option value="Paro">Paro</option>
+        <option value="Punakha">Punakha</option>
+        <option value="Samdrup Jongkhar">Samdrup Jongkhar</option>
+        <option value="Sarpang">Sarpang</option>
+        <option value="Samtse">Samtse</option>
+        <option value="Thimphu">Thimphu</option>
+        <option value="Tsirang">Tsirang</option>
+        <option value="Trashi Yangtse">Trashi Yangtse</option>
+        <option value="Trashigang">Trashigang</option>
+        <option value="Trongsa">Trongsa</option>
+        <option value="Wangdue Phodrang">Wangdue Phodrang</option>
+        <option value="Zhemgang">Zhemgang</option>
+        <!-- Add more options here -->
+    </select>
+    <x-input-error for="address" class="mt-2" />
+</div>
+
 
     <!-- Department -->
     <div class="col-span-6 sm:col-span-4">
     <x-label for="department" value="{{ __('Department') }}" />
-    <select name="department" id="department" class="px-3 py-2 block mt-1 w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm" wire:model.defer="state.department">
+    <select name="department" id="department" class="px-3 py-2 block mt-1 w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm" wire:model.defer="state.department_id">
     <option value="">Select Department</option>
     @foreach(\App\Models\Department::all() as $department)
     <option value="{{ $department->id }}" @if(isset($state['department']) && $state['department']== $department->id ) selected @endif>{{ $department->department_name }}</option>
@@ -109,7 +133,8 @@
     <!-- Programme -->
     <div class="col-span-6 sm:col-span-4">
     <x-label for="programme" value="{{ __('Programme') }}" />
-    <select name="programme" id="programme" class="px-3 py-2 block mt-1 w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm" wire:model.defer="state.programme">
+    <select name="programme" id="programme" class="px-3 py-2 block mt-1 w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm" wire:model.defer="state.programme_id">
+        <option value="">Select Programme</option>
         @foreach(\App\Models\programme::all() as $program)
         <option value="{{ $program->id }}" @if(isset($state['programme']) && $state['programme'] == $program->id) selected @endif>{{ $program->programme_name }}</option>
         @endforeach
@@ -147,18 +172,7 @@
     <x-input-error for="employment_status" class="mt-2" />
 </div>
   
-     <!-- Relationship Status -->
-         <div wire:model.defer="state.relationship_status" class="col-span-6 sm:col-span-4">
-    <x-label for="relationship_status" value="{{ __('Relationship Status') }}" />
-    <select id="relationship_status" name="relationship_status" class="mt-1 block w-full">
-        <option value="" disabled selected>Select Relationship Status</option>
-        <option value="Single" @if(old('relationship_status', $state['relationship_status']) == 'Single') selected @endif>Single</option>
-        <option value="Married" @if(old('relationship_status', $state['relationship_status']) == 'Married') selected @endif>Married</option>
-        <option value="Divorced" @if(old('relationship_status', $state['relationship_status']) == 'Divorced') selected @endif>Divorced</option>
-        <option value="Widowed" @if(old('relationship_status', $state['relationship_status']) == 'Widowed') selected @endif>Widowed</option>
-    </select>
-    <x-input-error for="relationship_status" class="mt-2" />
-    </div>
+     
              <!-- Email -->
     
     </x-slot>

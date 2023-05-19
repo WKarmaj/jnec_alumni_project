@@ -3,19 +3,6 @@
 <html lang="en">
   <head>
 
-  <style type="text/css">
-
-    label
-    {
-      dsiplay:inline-block;
-      width: 100px;
-      text-align:right;
-      padding-top: 20px;
-      padding-bottom: 20px;
-    }
-
-  </style>
-
   @include('admin.css')
 
   </head>

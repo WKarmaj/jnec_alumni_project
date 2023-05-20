@@ -89,7 +89,7 @@
     <!-- Current address -->
     <div class="col-span-6 sm:col-span-4">
     <x-label for="address" value="{{ __('Current Address') }}" />
-    <select id="address" class="mt-1 block w-full" wire:model.defer="state.address">
+    <select id="address" class="px-3 py-2 block mt-1 w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm" wire:model.defer="state.address">
         <option value="">Select an address</option>
         <option value="Bumthang">Bumthang</option>
         <option value="Chukha">Chukha</option>
@@ -99,6 +99,7 @@
         <option value="Lhuntse">Lhuntse</option>
         <option value="Mongar">Mongar</option>
         <option value="Paro">Paro</option>
+        <option value="Pema Gatshel">Pema Gatshel</option>
         <option value="Punakha">Punakha</option>
         <option value="Samdrup Jongkhar">Samdrup Jongkhar</option>
         <option value="Sarpang">Sarpang</option>
@@ -119,39 +120,48 @@
     <!-- Department -->
     <div class="col-span-6 sm:col-span-4">
     <x-label for="department" value="{{ __('Department') }}" />
-    <select name="department" id="department" class="px-3 py-2 block mt-1 w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm" wire:model.defer="state.department_id">
-    <option value="">Select Department</option>
-    @foreach(\App\Models\Department::all() as $department)
-    <option value="{{ $department->id }}" @if(isset($state['department']) && $state['department']== $department->id ) selected @endif>{{ $department->department_name }}</option>
-    @endforeach
-</select>
-
+    <select name="department" id="department" class="px-3 py-2 block mt-1 w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm" wire:model="state.department_id">
+        <option value="">Select Department</option>
+        @foreach(\App\Models\Department::all() as $department)
+            <option value="{{ $department->id }}">{{ $department->department_name }}</option>
+        @endforeach
+    </select>
     <x-input-error for="department" class="mt-2" />
 </div>
 
-
-    <!-- Programme -->
-    <div class="col-span-6 sm:col-span-4">
+<!-- Programme -->
+<div class="col-span-6 sm:col-span-4">
     <x-label for="programme" value="{{ __('Programme') }}" />
-    <select name="programme" id="programme" class="px-3 py-2 block mt-1 w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm" wire:model.defer="state.programme_id">
+    <select name="programme" id="programme" class="px-3 py-2 block mt-1 w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm" wire:model="state.programme_id">
         <option value="">Select Programme</option>
-        @foreach(\App\Models\programme::all() as $program)
-        <option value="{{ $program->id }}" @if(isset($state['programme']) && $state['programme'] == $program->id) selected @endif>{{ $program->programme_name }}</option>
-        @endforeach
+        @if($state['department_id'])
+            @foreach(\App\Models\Programme::where('department_id', $state['department_id'])->get() as $program)
+                <option value="{{ $program->id }}">{{ $program->programme_name }}</option>
+            @endforeach
+        @endif
     </select>
     <x-input-error for="programme" class="mt-2" />
-    </div>
+</div>
+
+@push('scripts')
+    <script>
+        document.addEventListener('livewire:load', function () {
+            Livewire.on('departmentSelected', function (departmentId) {
+                Livewire.emit('getProgrammes', departmentId);
+            });
+        });
+    </script>
+@endpush
 
 
-     <!-- Employment Status --> 
-     <div wire:model.defer="state.employment_status" class="col-span-6 sm:col-span-4">
-     <x-label for="employment_status" value="{{ __('Employment Status') }}" />
+  <!-- Employment Status -->
+  <div class="col-span-6 sm:col-span-4">
+    <x-label for="employment_status" value="{{ __('Employment Status') }}" />
     <div class="flex items-center">
+        <input id="employed" type="radio" class="mr-2" name="employment_status" value="employed" wire:model.defer="state.employment_status" onclick="document.getElementById('employed-fields').style.display = 'inline'" autocomplete="off" />
+        <label for="employed" class="mr-4">{{ __('Employed') }}</label>
         
-    <x-input id="employed" type="radio" class="mr-2" name="employment_status" value="employed" wire:model.defer="state.employment_status" onclick="document.getElementById('employed-fields').style.display = 'inline'" autocomplete="employment_status"/>
-        <x-label for="employed" value="{{ __('Employed') }}" />
-       
-        <div id="employed-fields" class="ml-6" style="display:none">
+        <div id="employed-fields" class="ml-6" style="display: none">
             <div>
                 <x-label for="organization" value="{{ __('Organization') }}" />
                 <x-input id="organization" type="text" class="mt-1 block w-full" wire:model.defer="state.organization" />
@@ -164,15 +174,14 @@
             </div>
         </div>
 
-        <x-input id="unemployed" type="radio" class="ml-6 mr-2" name="employment_status" value="unemployed" wire:model.defer="state.employment_status"/>
-    <x-label for="unemployed" value="{{ __('Unemployed') }}" />
-        
+        <input id="unemployed" type="radio" class="ml-6 mr-2" name="employment_status" value="unemployed" wire:model.defer="state.employment_status" autocomplete="off" />
+        <label for="unemployed">{{ __('Unemployed') }}</label>
     </div>
 
     <x-input-error for="employment_status" class="mt-2" />
 </div>
-  
-     
+
+
              <!-- Email -->
     
     </x-slot>

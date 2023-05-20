@@ -10276,43 +10276,11 @@ a.text-dark:hover, a.text-dark:focus {
   }
 
 }
-form {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-}
 
 
 
-label {
-  margin-right: 0.5rem;
-  font-weight: bold;
-}
-
-select {
-  margin-right: 0.5rem;
-  border-radius: 4px;
-}
-.search :is(input,button){
-  background: transparent;
-  color: #fff;;
-  border: none;
-  outline: none;
-}
 
 
 
-.search_button{
-  display:grid;
-  place-items: center;
-  width:20px;
-  height: 10px;
-  cursor:pointer;
-  transition: color .25s;
-}
-.search:focus-within input {
-  width:200px;
-}
 
 /*# sourceMappingURL=bootstrap.css.map */

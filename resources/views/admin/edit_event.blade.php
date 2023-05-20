@@ -15,7 +15,9 @@
         <!-- partial:partials/_navbar.html -->
                 @include('admin.navbar')
               <div class="conatainer-fluid page-body-wrapper">
+                
                 <div align="center" style="padding-top:100px;">
+               <h2>Edit the event here</h2>
                      <table>
                       <tr style="background-color:tomato;">
                         <td style="padding: 10px;">Name</td>

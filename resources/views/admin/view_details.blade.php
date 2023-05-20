@@ -5,104 +5,116 @@
 </head>
 <body style="background-color: #f2f4f8;">
   <div class="container-scroller">
-          <!-- partial:partials/_sidebar.html -->
-          @include('admin.sidebar')
-          <!-- partial -->
-          <!-- partial:partials/_navbar.html -->
-          @include('admin.navbar')
-    <div class="flex items-center" style="margin-top: 100px;">
+    <!-- partial:partials/_sidebar.html -->
+    @include('admin.sidebar')
+    <!-- partial -->
+    <!-- partial:partials/_navbar.html -->
+    @include('admin.navbar')
+    <div class="flex items-center" style="margin-top: 50px;">
       <div class="col-span-6 sm:col-span-4">
         <form action="{{ url('view_details') }}" method="GET" class="flex flex-col sm:flex-row items-center">
-
           <table>
             <tr>
               <td>
-              <div style="display: flex;">
-                  <input type="text" name="search" id="search" placeholder="Search" class="" style="width: 250px; border-radius: 4px; padding: 10px; border: 2px solid #ccc; font-size: 16px; outline: none;">
-      
+                <div style="display: flex;">
+                  <input type="text" name="search" id="search" placeholder="Search" class="w-64 border border-gray-300 rounded px-4 py-2 text-lg focus:outline-none" />
                 </div>
               </td>
             </tr>
             <tr>
-            
               <td>
-                <div class="">
-                  <label for="department" style="color:black;">Department:</label>
-                  <select name="department_id" id="department" class="" style="width: 250px; border-radius: 4px;">
+                <div class="mt-4">
+                  <label for="department" class="block text-black mb-2">Department:</label>
+                  <select style="color: #333333;" name="department_id" id="department" class="w-64 border border-gray-300 rounded px-4 py-2 text-lg focus:outline-none">
                     <option value="">Select Department</option>
                     @foreach(\App\Models\Department::all() as $department)
-                    <option style="color:black;" value="{{ $department->id }}" @if(isset($state['department_id']) && $state['department_id']== $department->id ) selected @endif>{{ $department->department_name }}</option>
+                    <option style="color: #333333;" value="{{ $department->id }}" @if(isset($state['department_id']) && $state['department_id'] == $department->id ) selected @endif>{{ $department->department_name }}</option>
                     @endforeach
                   </select>
                 </div>
               </td>
               <td>
-                <div class="" style="">
-                  <label for="programme" style="color:black;">Programme:</label>
-                  <select name="programme_id" id="programme" class="" style="width: 150px; border-radius: 4px;">
-                    <option value="">Select Programme</option>
+                <div class="mt-4">
+                  <label for="programme" class="block text-black mb-2">Programme:</label>
+                  <select name="programme_id" id="programme" class="w-48 border border-gray-300 rounded px-4 py-2 text-lg focus:outline-none" style="color: #333333;">
+                    <option value="" style="color: #333333;">Select Programme</option>
                   </select>
                 </div>
               </td>
               <td>
-                <div class="">
-                  <label for="year" style="color:black;">Year:</label>
-                  <select name="year" id="year" class="" style="width: 150px; border-radius:4px;">
+                <div class="mt-4">
+                  <label for="year" class="block text-black mb-2">Year:</label>
+                  <select name="year" id="year" class="w-48 border border-gray-300 rounded px-4 py-2 text-lg focus:outline-none" style="color: #333333;">
                     <option value="">Select Year</option>
                     @foreach(range(date('Y'), 2000) as $year)
-                    <option style="color:black;" value="{{ $year }}" {{ (Request::get('year') == $year) ? 'selected' : '' }}>{{ $year }}</option>
+                    <option style="color: #333333;" value="{{ $year }}" {{ (Request::get('year') == $year) ? 'selected' : '' }}>{{ $year }}</option>
                     @endforeach
                   </select>
                 </div>
               </td>
               <td>
-                <div class="">
-                  <label for="employment_status" style="color:black;">Employment Status:</label>
-                  <select name="employment_status" id="employment_status" class="" style="width: 150px; border-radius:4px;">
-                    <option value="" style="color:black;">Select Employment Status</option>
-                    <option value="employed" {{ (Request::get('employment_status') == 'employed') ? 'selected' : '' }} style="color:black;">Employed</option>
-                    <option value="unemployed" {{ (Request::get('employment_status') == 'unemployed') ? 'selected' : '' }} style="color:black;">Unemployed</option>
+                <div class="mt-4">
+                  <label for="employment_status" class="block text-black mb-2">Employment Status:</label>
+                  <select name="employment_status" id="employment_status" class="w-48 border border-gray-300 rounded px-6 py-2 text-lg focus:outline-none" style="color: #333333;">
+                    <option value="">Select Employment Status</option>
+                    <option value="employed" {{ (Request::get('employment_status') == 'employed') ? 'selected' : '' }}>Employed</option>
+                    <option value="unemployed" {{ (Request::get('employment_status') == 'unemployed') ? 'selected' : '' }}>Unemployed</option>
                   </select>
                 </div>
               </td>
               <td>
-                <div style="margin-right: 210px; margin-top:20px;">
-                  <button type="submit" id="search" class="form-control" style="background-color: #007bff; color: #ffffff;">Search</button>
+                <div class="mt-12">
+                  <button type="submit" id="search" class="bg-blue-500 text-white px-4 py-2 rounded">Search</button>
                 </div>
               </td>
             </tr>
           </table>
         </form>
-        <table style="width: 100%; background-color: #ffffff; color:black;">
-          <tr style="background-color: #007bff; color: #ffffff;">
-            <th style="padding: 8px;">Name</th>
-            <th style="padding: 8px;">Email</th>
-            <th style="padding: 8px;">Phone</th>
-            <th style="padding: 8px;">Year of Graduation</th>
-            <th style="padding: 8px;">Department</th>
-            <th style="padding: 8px;">Programme</th>
-            <th style="padding: 8px;">Remarks</th>
-          </tr>
-          @foreach($results as $users)
-          <tr align="center" style="background-color: #ffffff;">
-            <td style="padding: 8px;">{{$users->name}}</td>
-            <td style="padding: 8px;">{{$users->email}}</td>
-            <td style="padding: 8px;">{{$users->phone}}</td>
-            <td style="padding: 8px;">{{$users->year}}</td>
-            <td style="padding: 8px;">{{$users->department_name}}</td>
-            <td style="padding: 8px;">{{$users->programme_name}}</td>
-            @if($users->usertype==("0"))
-            <td><a onclick="return confirm('Are You Sure?')" class="btn btn-danger" href="{{url('deleteuser',$users->id)}}" style="background-color: #dc3545; color: #ffffff;">Delete</a></td>
-            @else
-            <td>Admin</td>
-            @endif
-          </tr>
-          @endforeach
-        </table>
+
+      <div class="table-responsive">
+        <div class="table-wrapper">
+          <table class="table table-striped table-responsive-sm">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Year of Graduation</th>
+                <th>Department</th>
+                <th>Programme</th>
+                <th>Remarks</th>
+              </tr>
+            </thead>
+            <tbody>
+              @foreach($results as $user)
+              <tr>
+                <td class="px-3 py-2">{{$user->name}}</td>
+                <td class="px-3 py-2">{{$user->email}}</td>
+                <td class="px-3 py-2">{{$user->phone}}</td>
+                <td class="px-3 py-2">{{$user->year}}</td>
+                <td class="px-3 py-2">{{$user->department_name}}</td>
+                <td class="px-3 py-2">{{$user->programme_name}}</td>
+                <td class="px-3 py-2">
+                  @if($user->usertype == "0")
+                  <a onclick="return confirm('Are You Sure?')" class="btn btn-danger" href="{{url('deleteuser',$user->id)}}">Delete</a>
+                  @else
+                  Admin
+                  @endif
+                </td>
+              </tr>
+              @endforeach
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+
+
       </div>
     </div>
-    @include('admin.script')
-    <!-- End custom js for this page -->
+  </div>
+  @include('admin.script')
+  <!-- End custom js for this page -->
   </div>
 </div>
 <script>
@@ -116,9 +128,9 @@
           dataType: 'JSON',
           success: function(data) {
             $('#programme').empty();
-            $('#programme').append('<option  style="color:black;" value="">Select Programme</option>');
+            $('#programme').append('<option  style="color: #333333;" value="">Select Programme</option>');
             $.each(data, function(key, value) {
-              $('#programme').append('<option  style="color:black;" value="' + value.id + '">' + value.programme_name + '</option>');
+              $('#programme').append('<option  style="color: #333333;" value="' + value.id + '">' + value.programme_name + '</option>');
             });
           }
         });

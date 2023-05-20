@@ -102,11 +102,12 @@
     </div>
   </div>
 
+ 
   <div class="page-section">
-
-  @include('contactForm')  
-
+  @include('contactForm') 
   </div>
+  
+
   
  <!-- .bg-light -->
 
@@ -120,19 +121,12 @@
     <div class="container">
       <div class="row px-md-3">
         <div class="col-sm-6 col-lg-3 py-3">
-          <h5>Contact</h5>
+          <h5>Visit us On </h5>
 
-          <ul class="footer-menu">
-            
-            <li><a href="#">About Us</a></li>
-          </ul>
-        </div>
-        <div class="col-sm-6 col-lg-3 py-3">
-          <h5>More</h5>
           <ul class="footer-menu">
             <li><a href="https://www.facebook.com/jigmenamgyelengineeringcollege/" target="_blank"><span class="mai-logo-facebook-f"></span>acebook</a></li>
             <li> <a href="https://www.jnec.edu.bt/en/" target="_blank"><span class="mai-logo-google-plus-g"> website</span></a></li>
-            <li> <a href="#" target="_blank"><span class="mai-logo-instagram"> Instagram</span></a></li>
+            
           </ul>
     </div>
       </div>

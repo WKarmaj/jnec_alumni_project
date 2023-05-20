@@ -41,7 +41,9 @@
     </div> <!-- .topbar -->
     <nav class="navbar navbar-expand-lg navbar-light shadow-sm">
       <div class="container">
-        <a class="navbar-brand" href="#"><span class="text-primary"></a>
+        <div class="" id="navbarSupport">
+          <img src="Golden Jubilee Logo-Stroke .png" alt="" height="80px" width="80px">
+        </div>
         <div class="" id="navbarSupport">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item active">

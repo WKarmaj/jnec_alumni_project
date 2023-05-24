@@ -91,7 +91,11 @@ Route::get('/get-programs/{department_id}', [ProgramController::class, 'getProgr
 Route::get('/add_programme',[ProgramController::class,'addprogramme']);
 
 Route::get('/addprogramme', [ProgramController::class, 'addprogramme'])->name('add.programme');
+
 Route::post('/uploadprogramme', [ProgramController::class, 'uploadprogramme'])->name('upload.programme');
+
+
+
 
 
 

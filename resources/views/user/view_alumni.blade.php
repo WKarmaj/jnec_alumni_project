@@ -53,7 +53,7 @@
     <nav class="navbar navbar-expand-lg navbar-light shadow-sm">
       <div class="container">
       <div class="" id="navbarSupport">
-          <img src="Golden Jubilee Logo-Stroke .png" alt="" height="80px" width="80px">
+          <img src="GoldenJubileeLogoStroke.png" alt="" height="80px" width="80px">
         </div>
         <div class="" id="navbarSupport">
           <ul class="navbar-nav ml-auto">

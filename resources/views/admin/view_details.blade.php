@@ -2,6 +2,25 @@
 <html lang="en">
 <head>
   @include('admin.css')
+  <style>
+  .table {
+    font-size: 12px;
+  }
+
+  .table td,
+  .table th {
+    padding: 0.5rem;
+    white-space: nowrap;
+  }
+
+  .table tbody tr:nth-child(even) {
+    background-color: #f8f9fa;
+  }
+
+  .table tbody tr:hover {
+    background-color: #e9ecef;
+  }
+</style>
 </head>
 <body style="background-color: #f2f4f8;">
   <div class="container-scroller">
@@ -17,7 +36,7 @@
             <tr>
               <td>
                 <div style="display: flex;">
-                  <input type="text" name="search" id="search" placeholder="Search" class="w-64 border border-gray-300 rounded px-4 py-2 text-lg focus:outline-none" />
+                  <input type="text" name="search" id="search" placeholder="Search" class="w-64 border border-gray-300 rounded px-4 py-2 text-lg focus:outline-none" style="color:black;" />
                 </div>
               </td>
             </tr>
@@ -71,46 +90,42 @@
           </table>
         </form>
 
-      <div class="table-responsive">
-        <div class="table-wrapper">
-          <table class="table table-striped table-responsive-sm">
-            <thead>
-              <tr>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Phone</th>
-                <th>Year of Graduation</th>
-                <th>Department</th>
-                <th>Programme</th>
-                <th>Remarks</th>
-              </tr>
-            </thead>
-            <tbody>
-              @foreach($results as $user)
-              <tr>
-                <td class="px-3 py-2">{{$user->name}}</td>
-                <td class="px-3 py-2">{{$user->email}}</td>
-                <td class="px-3 py-2">{{$user->phone}}</td>
-                <td class="px-3 py-2">{{$user->year}}</td>
-                <td class="px-3 py-2">{{$user->department_name}}</td>
-                <td class="px-3 py-2">{{$user->programme_name}}</td>
-                <td class="px-3 py-2">
-                  @if($user->usertype == "0")
-                  <a onclick="return confirm('Are You Sure?')" class="btn btn-danger" href="{{url('deleteuser',$user->id)}}">Delete</a>
-                  @else
-                  Admin
-                  @endif
-                </td>
-              </tr>
-              @endforeach
-            </tbody>
-          </table>
+        <div class="table-responsive">
+          <div style="max-height: 400px; overflow-y: auto;">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Phone</th>
+                  <th>Year of Graduation</th>
+                  <th>Department</th>
+                  <th>Programme</th>
+                  <th>Remarks</th>
+                </tr>
+              </thead>
+              <tbody>
+                @foreach($results as $user)
+                <tr>
+                  <td>{{$user->name}}</td>
+                  <td>{{$user->email}}</td>
+                  <td>{{$user->phone}}</td>
+                  <td>{{$user->year}}</td>
+                  <td>{{$user->department_name}}</td>
+                  <td>{{$user->programme_name}}</td>
+                  <td>
+                    @if($user->usertype == "0")
+                    <a onclick="return confirm('Are You Sure?')" class="btn btn-danger btn-sm" href="{{url('deleteuser',$user->id)}}">Delete</a>
+                    @else
+                    Admin
+                    @endif
+                  </td>
+                </tr>
+                @endforeach
+              </tbody>
+            </table>
+          </div>
         </div>
-      </div>
-
-
-
-      </div>
     </div>
   </div>
   @include('admin.script')

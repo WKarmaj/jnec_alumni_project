@@ -23,7 +23,7 @@
       
         <!-- partial:partials/_navbar.html -->
                 @include('admin.navbar')
-                <div class="container-fluid page-body-wrapper" style="background-color: #f8f9fa;">
+<div class="container-fluid page-body-wrapper" style="background-color: #f8f9fa;">
   <div class="container" align="center" style="padding: 100px;">
     <form action="{{ url('editevents', $events->id) }}" method="POST" enctype="multipart/form-data">
 

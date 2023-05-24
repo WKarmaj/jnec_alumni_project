@@ -12,14 +12,17 @@
       <!-- partial:partials/_sidebar.html -->
                 @include('admin.sidebar')
       <!-- partial -->
-      
+      @include('admin.navbar')
         <!-- partial:partials/_navbar.html -->
-        <div class="container-fluid page-body-wrapper">
-                @include('admin.navbar')
-        </div>
-        <!-- partial -->
-                @include('admin.body')
-    </div>
+<div class="container-fluid page-body-wrapper">
+  <div class="container-scroller">
+               
+      
+
+
+   
+  </div>
+ </div>
     <!-- container-scroller -->
     
     <!-- plugins:js -->

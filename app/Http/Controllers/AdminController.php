@@ -14,6 +14,10 @@ use App\Models\Programme;
 
 use Illuminate\Support\Facades\Hash;
 
+use App\Notifications\EventUploadedNotification;
+
+use Illuminate\Support\Facades\Notification;
+
 
 
 class AdminController extends Controller
@@ -73,6 +77,9 @@ class AdminController extends Controller
         $event->phone=$request->number;
 
         $event->save();
+
+        $users = User::all(); // Assuming you have a User model for registered users
+        Notification::send($users, new EventUploadedNotification($event));
 
         return redirect()->back()->with('message','Event Uploaded Successfully');
 
@@ -157,9 +164,5 @@ class AdminController extends Controller
          return redirect()->back()->with('success', 'Department added successfully.');
 
    }
-
-    
    
- 
-
 }

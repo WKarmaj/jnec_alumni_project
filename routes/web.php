@@ -14,6 +14,9 @@ use App\Http\Controllers\ContactController;
 
 use App\Http\Controllers\ProgramController;
 
+use App\Http\Controllers\AdminSearchController;
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -74,6 +77,8 @@ Route::post('/add_department',[AdminController::class,'adddepartment']);
 
 
 
+
+
 //Route::post('/upload_programme',[ProgramController::class,'uploadprogramme']);
 
 Route::get('view_details',[ViewAlumniController::class,'find']);
@@ -93,6 +98,12 @@ Route::get('/add_programme',[ProgramController::class,'addprogramme']);
 Route::get('/addprogramme', [ProgramController::class, 'addprogramme'])->name('add.programme');
 
 Route::post('/uploadprogramme', [ProgramController::class, 'uploadprogramme'])->name('upload.programme');
+
+Route::get('/dashboard', [AdminSearchController::class, 'search'])->name('search');
+
+Route::get('/dashboard', [AdminSearchController::class, 'dashboard'])->name('dashboard');
+
+
 
 
 

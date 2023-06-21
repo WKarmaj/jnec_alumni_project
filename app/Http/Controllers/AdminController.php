@@ -27,6 +27,11 @@ class AdminController extends Controller
 
         return view('admin.add_event');
     }
+    public function viewhome()
+    {
+
+        return view('admin.home');
+    }
     public function adduser()
     {
         return view('admin.add_user');

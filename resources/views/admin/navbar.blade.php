@@ -8,7 +8,7 @@
     </button>
     <ul class="navbar-nav navbar-nav-right">
       <li class="nav-item nav-settings d-none d-lg-block">
-        <a class="nav-link" href="{{url('home')}}" style="color: #333;">
+      
           <i class="mdi mdi-view-grid"></i>
         </a>
       </li>

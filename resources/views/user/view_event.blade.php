@@ -32,8 +32,7 @@
           <div class="col-sm-8 text-sm">
             <div class="site-info">
               <a href="#"><span class="mai-call text-primary"></span>+975-07-260-302, +975-07-260-202</a>
-              <span class="divider">|</span>
-              <a href="#"><span class="mai-mail text-primary"></span>helpdesk.jnec@rub.edu.bt</a>
+
             </div>
           </div>
         </div> <!-- .row -->
